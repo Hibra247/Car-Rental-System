@@ -24,11 +24,20 @@ string getBrand(){return brand;};
 int getModel(){return model;};
 int getRentalPrice(){return rental_price;};
 
-void info(){
-    cout<<"carId: "<<cardID<<endl;
-    cout<<"car brand: "<<brand<<endl;
-    cout<<"model: "<<model<<endl;
-    cout<<"rental price of this model/day: "<<rental_price<<endl;
+void display(){
+   ifstream inputFile("car_data.txt"); // Open the file for reading
+
+        if (!inputFile.is_open()) {
+            cerr << "Error opening the file for reading!" << endl;
+            return; // Exit the function if file opening fails
+        }
+
+        string line;
+        while (getline(inputFile, line)) {
+            cout << line << endl;
+        }
+
+        inputFile.close(); // Close the file
 
     
 }
@@ -43,9 +52,7 @@ int main(){
 int choice;
 int day;
 int price;
-Car c1(1321,"toyata",2023,200);
-Car c2(1567, "honda",2022,300);
-Car c3(2344, "mini cooper",2024,400);
+c1.display();
 
 
 cout<<"_____________cars availlible________________- "<<endl;
