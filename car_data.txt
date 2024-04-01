@@ -1,0 +1,202 @@
+car_id,make,model,year,starting_price,availability
+1, Toyota, Camry LE, 2020, $40/day
+2, Ford, Mustang GT, 2019, $60/day
+3, Honda, Civic LX, 2021, $45/day
+4, Chevrolet, Silverado 1500 LT, 2018, $55/day
+5, BMW, 3 Series 330i, 2022, $70/day
+6, Mercedes-Benz, E-Class E350, 2017, $65/day
+7, Audi, A4 Premium, 2020, $60/day
+8, Tesla, Model S Performance, 2023, $150/day
+9, Subaru, Outback Limited, 2019, $55/day
+10, Nissan, Altima SV, 2021, $50/day
+11, Ford, F-150 XLT, 2018, $65/day
+12, Toyota, Corolla SE, 2020, $40/day
+13, Volkswagen, Jetta GLI, 2022, $45/day
+14, Hyundai, Sonata SEL, 2019, $50/day
+15, Jeep, Wrangler Rubicon, 2021, $80/day
+16, Chevrolet, Tahoe Premier, 2017, $100/day
+17, Lexus, RX 350 F Sport, 2020, $90/day
+18, Mazda, CX-5 Grand Touring, 2019, $55/day
+19, Kia, Telluride SX, 2022, $80/day
+20, Dodge, Charger R/T, 2018, $70/day
+21, Subaru, Forester Touring, 2021, $60/day
+22, Honda, Accord Sport, 2020, $50/day
+23, Ford, Explorer Limited, 2019, $70/day
+24, GMC, Sierra 2500HD Denali, 2022, $120/day
+25, BMW, X5 xDrive40i, 2018, $100/day
+26, Mercedes-Benz, C-Class C300, 2021, $65/day
+27, Audi, Q5 Premium Plus, 2019, $75/day
+28, Tesla, Model 3 Long Range, 2023, $120/day
+29, Toyota, Highlander XLE, 2020, $80/day
+30, Nissan, Rogue SL, 2018, $55/day
+31, Ford, Escape Titanium, 2022, $60/day
+32, Volkswagen, Atlas Cross Sport SE, 2019, $70/day
+33, Hyundai, Tucson Ultimate, 2021, $65/day
+34, Jeep, Grand Cherokee Limited, 2018, $75/day
+35, Chevrolet, Equinox LT, 2020, $55/day
+36, Lexus, NX 300h Luxury, 2019, $70/day
+37, Mazda, Mazda3 Premium, 2022, $50/day
+38, Kia, Sportage SX Turbo, 2017, $60/day
+39, Dodge, Challenger SRT Hellcat, 2020, $110/day
+40, Subaru, Crosstrek Limited, 2018, $55/day
+41, Honda, CR-V EX-L, 2021, $65/day
+42, Ford, Edge SEL, 2019, $60/day
+43, GMC, Yukon XL SLT, 2022, $130/day
+44, BMW, 5 Series 540i, 2017, $95/day
+45, Mercedes-Benz, GLC 300 4MATIC, 2020, $70/day
+46, Audi, A6 Prestige, 2019, $80/day
+47, Tesla, Model Y Performance, 2023, $140/day
+48, Toyota, RAV4 XLE, 2018, $55/day
+49, Nissan, Sentra SR, 2021, $45/day
+50, Chevrolet, Traverse High Country, 2020, $90/day
+51, Hyundai, Kona Ultimate, 2019, $50/day
+52, Jeep, Cherokee Trailhawk, 2022, $75/day
+53, Subaru, Legacy Limited, 2018, $60/day
+54, Honda, Pilot Touring, 2021, $80/day
+55, Ford, Ranger Lariat, 2019, $65/day
+56, GMC, Canyon Denali, 2020, $70/day
+57, Kia, Sorento SX, 2017, $75/day
+58, Dodge, Durango GT, 2022, $90/day
+59, Lexus, ES 350 Ultra Luxury, 2019, $80/day
+60, Mazda, Mazda6 Signature, 2018, $60/day
+61, Volkswagen, Tiguan SEL Premium R-Line, 2021, $70/day
+62, BMW, 7 Series 750i, 2020, $150/day
+63, Mercedes-Benz, GLE 450 4MATIC, 2019, $100/day
+64, Audi, Q7 Prestige, 2017, $110/day
+65, Tesla, Cybertruck Tri Motor AWD, 2023, $200/day
+66, Toyota, Tacoma TRD Pro, 2018, $80/day
+67, Nissan, Titan Platinum Reserve, 2021, $100/day
+68, Chevrolet, Colorado ZR2, 2019, $85/day
+69, Hyundai, Santa Fe Limited, 2022, $90/day
+70, Jeep, Renegade Limited, 2017, $60/day
+71, Subaru, Ascent Touring, 2020, $85/day
+72, Honda, Odyssey Elite, 2019, $95/day
+73, Ford, Transit-350 XLT, 2021, $110/day
+74, GMC, Savana 2500 LT, 2018, $100/day
+75, Kia, Carnival SX, 2022, $120/day
+76, Dodge, Grand Caravan SXT, 2019, $80/day
+77, Lexus, GX 460 Luxury, 2017, $120/day
+78, Mazda, CX-9 Signature, 2020, $85/day
+79, Volkswagen, ID.4 1st Edition, 2021, $90/day
+80, BMW, X3 M40i, 2019, $80/day
+81, Mercedes-Benz, GLA 250 4MATIC, 2022, $70/day
+82, Audi, Q3 Premium, 2018, $75/day
+83, Tesla, Roadster Base, 2023, $250/day
+84, Toyota, Sienna XLE, 2017, $100/day
+85, Nissan, NV Passenger SL, 2020, $110/day
+86, Chevrolet, Express 3500 LT, 2019, $120/day
+87, Hyundai, Palisade Limited, 2022, $130/day
+88, Jeep, Compass Limited, 2018, $80/day
+89, Subaru, Impreza Sport, 2021, $60/day
+90, Honda, Fit EX, 2017, $45/day
+91, Ford, Fiesta ST, 2020, $50/day
+92, GMC, Terrain Denali, 2019, $70/day
+93, Kia, Soul GT-Line Turbo, 2022, $60/day
+94, Dodge, Journey Crossroad, 2018, $80/day
+95, Lexus, UX 250h F Sport, 2021, $70/day
+96, Mazda, CX-30 Premium Plus, 2019, $55/day
+97, Volkswagen, Arteon SEL R-Line, 2022, $90/day
+98, BMW, i3 120 Ah, 2017, $75/day
+99, Mercedes-Benz, EQC 400 4MATIC, 2020, $100/day
+100, Audi, e-tron Premium Plus, 2021, $130/day
+101, Tesla, Model X Plaid, 2023, $180/day
+102, Toyota, Prius Prime Limited, 2018, $55/day
+103, Nissan, Leaf SL Plus, 2019, $60/day
+104, Chevrolet, Bolt EV Premier, 2022, $70/day
+105, Hyundai, Ioniq Electric Limited, 2017, $80/day
+106, Jeep, Wrangler 4xe Rubicon, 2020, $110/day
+107, Subaru, Crosstrek Hybrid, 2021, $90/day
+108, Honda, Clarity Plug-In Hybrid Touring, 2018, $100/day
+109, Ford, Escape Plug-In Hybrid Titanium, 2019, $85/day
+110, GMC, Terrain AT4, 2022, $95/day
+111, Kia, Niro EV EX Premium, 2017, $70/day
+112, Dodge, Durango SRT Hellcat, 2020, $160/day
+113, Lexus, RX 450h F Sport, 2021, $110/day
+114, Mazda, MX-30, 2022, $75/day
+115, Volkswagen, ID. Buzz, 2023, $200/day
+116, BMW, iX xDrive50, 2021, $180/day
+117, Mercedes-Benz, EQS 450+ 2022, $250/day
+118, Audi, Q4 e-tron Premium, 2023, $150/day
+119, Tesla, Model S Plaid+ 2024, $300/day
+120, Toyota, Mirai Limited, 2022, $200/day
+121, Nissan, Ariya SV, 2023, $180/day
+122, Chevrolet, Equinox EV, 2024, $160/day
+123, Hyundai, Ioniq 5 Ultimate, 2023, $250/day
+124, Jeep, Grand Cherokee 4xe Overland, 2022, $200/day
+125, Subaru, Solterra Limited, 2023, $180/day
+126, Honda, Prologue Elite, 2024, $300/day
+127, Ford, F-150 Lightning Platinum, 2023, $250/day
+128, GMC, Hummer EV Edition 1, 2022, $300/day
+129, Kia, EV9 GT-Line, 2024, $180/day
+130, Dodge, Charger EV, 2023, $250/day
+131, Lexus, RZ 450e F Sport, 2024, $200/day
+132, Mazda, CX-50 Signature, 2023, $180/day
+133, Volkswagen, ID.8 GTX, 2024, $250/day
+134, BMW, i7 xDrive60, 2023, $300/day
+135, Mercedes-Benz, S-Class S580, 2022, $400/day
+136, Audi, A8 L 60 TFSI e, 2021, $350/day
+137, Tesla, Model S Plaid+, 2022, $500/day
+138, Toyota, Avalon Limited, 2020, $150/day
+139, Nissan, Maxima Platinum, 2021, $160/day
+140, Chevrolet, Malibu Premier, 2018, $140/day
+141, Hyundai, Genesis G80 3.3T Sport, 2019, $180/day
+142, Ford, Taurus SHO, 2017, $130/day
+143, BMW, 8 Series 840i Gran Coupe, 2022, $300/day
+144, Mercedes-Benz, S-Class S560 4MATIC, 2019, $250/day
+145, Audi, A7 Premium Plus, 2021, $280/day
+146, Tesla, Model S Long Range, 2023, $400/day
+147, Toyota, Avalon Hybrid XSE, 2020, $180/day
+148, Nissan, Maxima SR, 2021, $160/day
+149, Chevrolet, Malibu LT, 2018, $140/day
+150, Hyundai, Genesis G90 5.0 Ultimate, 2019, $220/day
+151, Ford, Taurus Limited, 2017, $130/day
+152, BMW, 8 Series M850i xDrive Gran Coupe, 2022, $350/day
+153, Mercedes-Benz, S-Class Maybach S650, 2020, $500/day
+154, Audi, A7 Prestige, 2021, $300/day
+155, Tesla, Model S Plaid, 2022, $600/day
+156, Toyota, Avalon Touring, 2020, $160/day
+157, Nissan, Maxima SV, 2021, $150/day
+158, Chevrolet, Malibu LS, 2018, $120/day
+159, Hyundai, Equus Ultimate, 2016, $200/day
+160, Ford, Fusion Titanium, 2017, $110/day
+161, BMW, 8 Series Alpina B8 Gran Coupe, 2023, $400/day
+162, Mercedes-Benz, CLS 63 AMG S 4MATIC+, 2021, $400/day
+163, Audi, S7 Premium Plus, 2021, $350/day
+164, Tesla, Model S Performance, 2023, $700/day
+165, Toyota, Camry XSE V6, 2019, $120/day
+166, Nissan, Altima SR, 2021, $110/day
+167, Chevrolet, Impala Premier, 2018, $100/day
+168, Hyundai, Azera Limited, 2017, $130/day
+169, Ford, Fusion Energi Titanium, 2017, $90/day
+170, BMW, M5, 2022, $300/day
+171, Mercedes-Benz, E-Class AMG E63 S 4MATIC+, 2021, $400/day
+172, Audi, RS 7 Performance, 2021, $350/day
+173, Tesla, Model S Plaid, 2021, $800/day
+174, Toyota, Avalon XLE, 2019, $110/day
+175, Nissan, Altima S, 2021, $100/day
+176, Chevrolet, Impala LT, 2018, $90/day
+177, Hyundai, Sonata Limited, 2017, $120/day
+178, Ford, Fusion SE, 2017, $80/day
+179, BMW, M8 Gran Coupe, 2022, $400/day
+180, Mercedes-Benz, CLS 53 AMG 4MATIC+, 2021, $350/day
+181, Audi, S6 Premium Plus, 2021, $300/day
+182, Tesla, Model S Long Range, 2021, $750/day
+183, Toyota, Avalon Hybrid Limited, 2019, $130/day
+184, Nissan, Altima Platinum, 2021, $120/day
+185, Chevrolet, Impala LS, 2018, $90/day
+186, Hyundai, Sonata Sport 2.0T, 2017, $110/day
+187, Ford, Fusion Hybrid SE, 2017, $80/day
+188, BMW, M8 Competition Gran Coupe, 2022, $450/day
+189, Mercedes-Benz, CLS 63 AMG S 4MATIC+, 2021, $400/day
+190, Audi, S6 Premium Plus, 2021, $350/day
+191, Tesla, Model S Plaid, 2020, $1000/day
+192, Toyota, Corolla XSE, 2020, $50/day
+193, Nissan, Versa SV, 2021, $40/day
+194, Chevrolet, Sonic Premier, 2018, $45/day
+195, Hyundai, Elantra Limited, 2017, $55/day
+196, Ford, Focus Titanium, 2017, $40/day
+197, BMW, 2 Series 230i Coupe, 2022, $70/day
+198, Mercedes-Benz, A-Class A220 4MATIC, 2021, $60/day
+199, Audi, A3 Premium, 2021, $50/day
+200, Tesla, Model 3 Standard Range Plus, 2023, $120/day
+
