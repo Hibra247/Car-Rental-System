@@ -11,6 +11,7 @@ int model;
 int rental_price;
 
 public:
+Car(){}
 Car(int _cardID,string _brand, int _model, int _rental_price): cardID(_cardID),brand(_brand),model(_model),rental_price(_rental_price){};
 
 void setDetail(int _cardID,string _brand, int _model, int _rental_price){
@@ -52,7 +53,8 @@ int main(){
 int choice;
 int day;
 int price;
-c1.display();
+Car c1; //
+c1.display(); //
 
 
 cout<<"_____________cars availlible________________- "<<endl;
