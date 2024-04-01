@@ -1,0 +1,88 @@
+#include<iostream>
+using namespace std;
+
+class Car{
+
+private:
+
+int cardID;
+string brand;
+int model;
+int rental_price;
+
+public:
+Car(int _cardID,string _brand, int _model, int _rental_price): cardID(_cardID),brand(_brand),model(_model),rental_price(_rental_price){};
+
+void setDetail(int _cardID,string _brand, int _model, int _rental_price){
+    cardID=_cardID;
+    brand=_brand;
+    model=_model;
+    rental_price=_rental_price;
+}
+int getId(){return cardID;};
+string getBrand(){return brand;};
+int getModel(){return model;};
+int getRentalPrice(){return rental_price;};
+
+void info(){
+    cout<<"carId: "<<cardID<<endl;
+    cout<<"car brand: "<<brand<<endl;
+    cout<<"model: "<<model<<endl;
+    cout<<"rental price of this model/day: "<<rental_price<<endl;
+
+    
+}
+double calcPrice(int day){
+    double price=rental_price * day;
+    return price;
+}
+};
+
+
+int main(){
+int choice;
+int day;
+int price;
+Car c1(1321,"toyata",2023,200);
+Car c2(1567, "honda",2022,300);
+Car c3(2344, "mini cooper",2024,400);
+
+
+cout<<"_____________cars availlible________________- "<<endl;
+c1.info();
+c2.info();
+c3.info();
+cout<<"enter 1,2,3, for desired car selection: ";
+cin>>choice;
+
+cout<<"enter number of days you wish to rent: "<<endl;
+cin>>day;
+
+if(choice==1||choice==2||choice==3){
+    double totalPrice;
+    switch(choice){
+
+        case 1:
+        totalPrice = c1.calcPrice(day);
+        break;
+
+         case 2:
+        totalPrice = c2.calcPrice(day);
+        break;
+         case 3:
+        totalPrice = c3.calcPrice(day);
+        break;
+
+        default:
+        cout<<"invalid "<<endl;
+
+    }
+    cout<<"total price is: "<<totalPrice<<endl;
+}
+else{
+cout<<"invalid "<<endl;
+}
+
+
+return 0;
+}
