@@ -72,7 +72,7 @@ class User{
 class Customer : protected User{
 	
 };
-class BookingManager: protected User,//public Car
+class BookingManager: protected User,public Car
 {
 	
 };
