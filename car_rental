@@ -54,6 +54,14 @@ class User{
 		return password;
 	}
 	void storeinfo(){
+		 ofstream outFile("customer_info.txt", ios::app); // Open file in append mode
+        if (outFile.is_open()) {
+            outFile << "Username: " << username << ", Password: " << password << endl;
+            outFile.close();
+            cout << "User information stored in customer_info.txt" << endl;
+        } else {
+            cerr << "Unable to open file!" << endl;
+        }
 	}
 	
 };
