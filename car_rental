@@ -1,4 +1,10 @@
 #include<iostream>
+#include <fstream>
+#include <conio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <dos.h>
+#include <iomanip>
 using namespace std;
 
 class Car{
@@ -26,21 +32,7 @@ int getModel(){return model;};
 int getRentalPrice(){return rental_price;};
 
 void display(){
-   ifstream inputFile("car_data.txt"); // Open the file for reading
-
-        if (!inputFile.is_open()) {
-            cerr << "Error opening the file for reading!" << endl;
-            return; // Exit the function if file opening fails
-        }
-
-        string line;
-        while (getline(inputFile, line)) {
-            cout << line << endl;
-        }
-
-        inputFile.close(); // Close the file
-
-    
+   //rewrite the display that using forloop display eac array element
 }
 double calcPrice(int day){
     double price=rental_price * day;
@@ -48,50 +40,32 @@ double calcPrice(int day){
 }
 };
 
+class User{
+	protected:
+		string username;
+		string password;
+
+	public:	
+	User(string u,string p) : username(u),password(p) {}
+	string getusername(){
+		return username;
+	}
+	string getpassword(){
+		return password;
+	}
+	void storeinfo(){
+	}
+	
+};
+class Customer : protected User{
+	
+};
+class BookingManager: protected User,//public Car
+{
+	
+};
 
 int main(){
-int choice;
-int day;
-int price;
-Car c1; //
-c1.display(); //
-
-
-cout<<"_____________cars availlible________________- "<<endl;
-c1.info();
-c2.info();
-c3.info();
-cout<<"enter 1,2,3, for desired car selection: ";
-cin>>choice;
-
-cout<<"enter number of days you wish to rent: "<<endl;
-cin>>day;
-
-if(choice==1||choice==2||choice==3){
-    double totalPrice;
-    switch(choice){
-
-        case 1:
-        totalPrice = c1.calcPrice(day);
-        break;
-
-         case 2:
-        totalPrice = c2.calcPrice(day);
-        break;
-         case 3:
-        totalPrice = c3.calcPrice(day);
-        break;
-
-        default:
-        cout<<"invalid "<<endl;
-
-    }
-    cout<<"total price is: "<<totalPrice<<endl;
-}
-else{
-cout<<"invalid "<<endl;
-}
-
 
 return 0;
 }
