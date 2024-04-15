@@ -10,26 +10,30 @@ using namespace std;
 class Car{
 
 private:
-
-int cardID;
-string brand;
-int model;
-int rental_price;
+    int carID;
+    string brand;
+    string model;
+    int year;
+    bool availability;
+   double rental_price;
 
 public:
-Car(){}
-Car(int _cardID,string _brand, int _model, int _rental_price): cardID(_cardID),brand(_brand),model(_model),rental_price(_rental_price){};
+Car(){} //needed for array declaration
+Car(int _carID,string _brand, string _model,int _year, double _rental_price): carID(_carID),brand(_brand),model(_model),year(_year),rental_price(_rental_price){};
 
-void setDetail(int _cardID,string _brand, int _model, int _rental_price){
-    cardID=_cardID;
+    void setDetail(int _carID,string _brand, string _model,int _year, double _rental_price){
+    carID=_carID;
     brand=_brand;
     model=_model;
+    year = _year;
     rental_price=_rental_price;
+    availability=true;
 }
-int getId(){return cardID;};
+    int getId(){return carID;};
 string getBrand(){return brand;};
-int getModel(){return model;};
-int getRentalPrice(){return rental_price;};
+string getModel(){return model;};
+int getYear(){return year;};
+double getRentalPrice(){return rental_price;};
 
 void display(){
    //rewrite the display that using forloop display eac array element
@@ -39,7 +43,7 @@ double calcPrice(int day){
     return price;
 }
 };
-
+const int num_cars = 200;
 class User{
 	protected:
 		string username;
