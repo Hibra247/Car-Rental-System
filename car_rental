@@ -1,9 +1,10 @@
 #include<iostream>
 #include <fstream>
-#include <cstidlib>
+#include <cstdlib>
 #include <iomanip>
 using namespace std;
 
+// Class representing a Car
 class Car{
 
 private:
@@ -12,71 +13,84 @@ private:
     string model;
     int year;
     bool availability;
-   double rental_price;
+    double rental_price;
 
 public:
-Car(){} //needed for array declaration
-Car(int _carID,string _brand, string _model,int _year, double _rental_price): carID(_carID),brand(_brand),model(_model),year(_year),rental_price(_rental_price){};
+    Car(){} // Default constructor needed for array declaration
+    Car(int _carID, string _brand, string _model, int _year, double _rental_price): carID(_carID),brand(_brand),model(_model),year(_year),rental_price(_rental_price){};
 
-    void setDetail(int _carID,string _brand, string _model,int _year, double _rental_price){
-    carID=_carID;
-    brand=_brand;
-    model=_model;
-    year = _year;
-    rental_price=_rental_price;
-    availability=true;
-}
+    // Method to set details of a car
+    void setDetail(int _carID, string _brand, string _model, int _year, double _rental_price){
+        carID = _carID;
+        brand = _brand;
+        model = _model;
+        year = _year;
+        rental_price = _rental_price;
+        availability = true; // Assume car is available by default
+    }
+
+    // Getter methods for car attributes
     int getId(){return carID;};
-string getBrand(){return brand;};
-string getModel(){return model;};
-int getYear(){return year;};
-double getRentalPrice(){return rental_price;};
+    string getBrand(){return brand;};
+    string getModel(){return model;};
+    int getYear(){return year;};
+    double getRentalPrice(){return rental_price;};
 
-void display(){
-   cout << "Car ID: " << carID << endl;
-    cout << "Brand: " << brand << endl;
-    cout << "Model: " << model << endl;
-    cout << "Year: " << year << endl;
-    cout << "Rental Price: $" << rental_price << endl;
-    cout << "Availability: " << (availability ? "Available" : "Unavailable") << endl;
-    cout << endl;
-}
-double calcPrice(int day){
-    double price=rental_price * day;
-    return price;
-}
+    // Method to display car details
+    void display(){
+        cout << "Car ID: " << carID << endl;
+        cout << "Brand: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "Year: " << year << endl;
+        cout << "Rental Price: $" << rental_price << endl;
+        cout << "Availability: " << (availability ? "Available" : "Unavailable") << endl;
+        cout << endl;
+    }
+
+    // Method to calculate rental price based on number of days
+    double calcPrice(int day){
+        double price = rental_price * day;
+        return price;
+    }
 };
-const int num_cars = 200;
-class User{
-	protected:
-		string username;
-		string password;
 
-	public:	
-	User(string u,string p) : username(u),password(p) {}
-	string getusername(){
-		return username;
-	}
-	string getpassword(){
-		return password;
-	}
-	void storeinfo(){
-		 ofstream outFile("customer_info.txt", ios::app); // Open file in append mode
+const int num_cars = 200;
+
+// Class representing a User
+class User{
+protected:
+    string name;
+    string password;
+
+public:
+    User(string n, string p) : name(n), password(p) {}
+    string getusername(){
+        return name;
+    }
+    string getpassword(){
+        return password;
+    }
+
+    // Method to store user information in a file
+    void storeinfo(){
+        ofstream outFile("customer_info.txt", ios::app); // Open file in append mode
         if (outFile.is_open()) {
-            outFile << "Username: " << username << ", Password: " << password << endl;
+            outFile << "Username: " << name << ", Password: " << password << endl;
             outFile.close();
             cout << "User information stored in customer_info.txt" << endl;
         } else {
             cout << "Unable to open file!" << endl;
         }
-	}
-	
+    }
 };
+
+// Class representing a Customer, inheriting from User
 class Customer : protected User{
-	
+    
 };
-class BookingManager: protected User,public Car
-{
+
+// Class representing a Booking Manager, inheriting from User and Car
+class BookingManager: protected User, public Car{
  private:
     string customername;
     int carnumber;
@@ -84,245 +98,256 @@ class BookingManager: protected User,public Car
     double rentalfee;
 
 public:
-    BookingManager(string username, string password, string cname, int cnumber, int days, double fee)
-        : User(username, password), carnumber(cnumber), days(days), rentalfee(fee) {}
+    BookingManager(string name, string password, string cname, int cnumber, int days, double fee)
+        : User(name, password), carnumber(cnumber), days(days), rentalfee(fee) {}
 
+    // Method to select a car
     void selectCar() {
         // Display menu of cars and prompt user to enter car number
         // Set carnumber data member based on user's selection
     }
 
+    // Method to set number of days for rental
     void setDays() {
         // Prompt user to enter number of days to rent car
         // Set days data member based on user's input
-    }   
-	void showrent()
+    }
+
+    // Method to display rental invoice
+    void showrent()
     {
-    cout << "\n                       Car Rental - Customer Invoice                  "<<endl;
-    cout << "	///////////////////////////////////////////////////////////"<<endl;
-    cout << "	| Invoice No. :"<<"------------------|"<<setw(10)<<"#BnC92243"<<" |"<<endl;
-    cout << "	| Customer Name:"<<"-----------------|"<<setw(10)<<customername<<" |"<<endl;
-    cout << "	| Car Model :"<<"--------------------|"<<setw(10)<<carmodel<<" |"<<endl;
-    cout << "	| Car No. :"<<"----------------------|"<<setw(10)<<carnumber<<" |"<<endl;
-    cout << "	| Number of days :"<<"---------------|"<<setw(10)<<days<<" |"<<endl;
-    cout << "	| Your Rental Amount is :"<<"--------|"<<setw(10)<<rentalfee<<" |"<<endl;
-    cout << "	| Caution Money :"<<"----------------|"<<setw(10)<<"0"<<" |"<<endl;
-    cout << "	| Advanced :"<<"---------------------|"<<setw(10)<<"0"<<" |"<<endl;
-    cout << "	 ________________________________________________________"<<endl;
-    cout <<"\n";
-    cout << "	| Total Rental Amount is :"<<"-------|"<<setw(10)<<rentalfee<<" |"<<endl;
-    cout << "	 ________________________________________________________"<<endl;
-    int f;	
+        // Display rental invoice details
+        cout << "\n                       Car Rental - Customer Invoice                  "<<endl;
+            cout << "    ///////////////////////////////////////////////////////////"<<endl;
+            cout << "    | Invoice No. :"<<"------------------|"<<setw(10)<<"#BnC92243"<<" |"<<endl;
+            cout << "    | Customer Name:"<<"-----------------|"<<setw(10)<<customername<<" |"<<endl;
+        cout << "    | Car Model :"<<"--------------------|"<<setw(10)<<getModel()<<" |"<<endl;
+            cout << "    | Car No. :"<<"----------------------|"<<setw(10)<<carnumber<<" |"<<endl;
+            cout << "    | Number of days :"<<"---------------|"<<setw(10)<<days<<" |"<<endl;
+            cout << "    | Your Rental Amount is :"<<"--------|"<<setw(10)<<rentalfee<<" |"<<endl;
+            cout << "    | Caution Money :"<<"----------------|"<<setw(10)<<"0"<<" |"<<endl;
+            cout << "    | Advanced :"<<"---------------------|"<<setw(10)<<"0"<<" |"<<endl;
+            cout << "     ________________________________________________________"<<endl;
+            cout <<"\n";
+            cout << "    | Total Rental Amount is :"<<"-------|"<<setw(10)<<rentalfee<<" |"<<endl;
+            cout << "     ________________________________________________________"<<endl;
+            int f;
+    }
 };
 
 int main(){
     
+    // Array of Car objects initialized with car details
     Car cars[num_cars]={
-       
+        // Car details initialization
         {1, "Toyota", "Camry LE", 2020, 40.0},
-        {2, "Ford", "Mustang GT", 2019, 60.0},
-        {3, "Honda", "Civic LX", 2021, 45.0},
-        {4, "Chevrolet", "Silverado 1500 LT", 2018, 55.0},
-        {5, "BMW", "3 Series 330i", 2022, 70.0},
-        {6, "Mercedes-Benz", "E-Class E350", 2017, 65.0},
-        {7, "Audi", "A4 Premium", 2020, 60.0},
-        {8, "Tesla"," Model S Performance", 2023, 150.0},
-        {9, "Subaru", "Outback Limited", 2019, 55.0},
-        {10, "Nissan", "Altima SV", 2021, 50.0},
-        {11, "Ford", "F-150 XLT", 2018, 65.0},
-        {12, "Toyota"," Corolla SE", 2020, 40.0},
-        {13, "Volkswagen", "Jetta GLI", 2022, 45.0},
-        {14, "Hyundai"," Sonata SEL", 2019, 50.0},
-        {15, "Jeep", "Wrangler Rubicon", 2021, 80.0},
-        {16, "Chevrolet"," Tahoe Premier", 2017, 100.0},
-        {17, "Lexus", "RX 350 F Sport", 2020, 90.0},
-        {18, "Mazda"," CX-5 Grand Touring", 2019, 55.0},
-        {19, "Kia"," Telluride SX", 2022, 80.0},
-        {20, "Dodge"," Charger R/T", 2018, 70.0},
-        {21, "Subaru"," Forester Touring", 2021, 60.0},
-        {22, "Honda"," Accord Sport", 2020, 50.0},
-        {23, "Ford"," Explorer Limited", 2019, 70.0},
-        {24, "GMC","Sierra 2500HD Denali", 2022, 120.0},
-        {25, "BMW", "X5 xDrive40i", 2018, 100.0},
-        {26, "Mercedes-Benz"," C-Class C300", 2021, 65.0},
-        {27, "Audi"," Q5 Premium Plus", 2019, 75.0},
-        {28, "Tesla", "Model 3 Long Range", 2023, 120.0},
-        {29, "Toyota"," Highlander XLE", 2020, 80.0},
-        {30, "Nissan"," Rogue SL", 2018, 55.0},
-        {31, "Ford", "Escape Titanium", 2022, 60.0},
-        {32, "Volkswagen"," Atlas Cross Sport SE", 2019, 70.0},
-        {33, "Hyundai", "Tucson Ultimate", 2021, 65.0},
-        {34, "Jeep"," Grand Cherokee Limited", 2018, 75.0},
-        {35, "Chevrolet", "Equinox LT", 2020, 55.0},
-        {36," Lexus"," NX 300h Luxury", 2019, 70.0},
-        {37, "Mazda", "Mazda3 Premium", 2022, 50.0},
-        {38, "Kia", "Sportage SX Turbo", 2017, 60.0},
-        {39, "Dodge", "Challenger SRT Hellcat", 2020, 110.0},
-        {40, "Subaru", "Crosstrek Limited", 2018, 55.0},
-        {41, "Honda", "CR-V EX-L", 2021, 65.0},
-        {42, "Ford", "Edge SEL", 2019, 60.0},
-        {43, "GMC", "Yukon XL SLT", 2022, 130.0},
-        {44, "BMW", "5 Series 540i", 2017, 95.0},
-        {45, "Mercedes-Benz", "GLC 300 4MATIC", 2020, 70.0},
-        {46, "Audi", "A6 Prestige", 2019, 80.0},
-        {47, "Tesla", "Model Y Performance", 2023, 140.0},
-        {48, "Toyota", "RAV4 XLE", 2018, 55.0},
-        {49, "Nissan", "Sentra SR", 2021, 45.0},
-        {50, "Chevrolet", "Traverse High Country", 2020, 90.0},
-        {51, "Hyundai", "Kona Ultimate", 2019, 50.0},
-        {52, "Jeep", "Cherokee Trailhawk", 2022, 75.0},
-        {53, "Subaru", "Legacy Limited", 2018, 60.0},
-        {54, "Honda", "Pilot Touring", 2021, 80.0},
-        {55, "Ford", "Ranger Lariat", 2019, 65.0},
-        {56, "GMC", "Canyon Denali", 2020, 70.0},
-        {57, "Kia", "Sorento SX", 2017, 75.0},
-        {58, "Dodge", "Durango GT", 2022, 90.0},
-        {59, "Lexus", "ES 350 Ultra Luxury", 2019, 80.0},
-        {60, "Mazda", "Mazda6 Signature", 2018, 60.0},
-        {61, "Volkswagen", "Tiguan SEL Premium R-Line", 2021, 70.0},
-        {62, "BMW", "7 Series 750i", 2020, 150.0},
-        {63, "Mercedes-Benz", "GLE 450 4MATIC", 2019, 100.0},
-        {64, "Audi", "Q7 Prestige", 2017, 110.0},
-        {65, "Tesla", "Cybertruck Tri Motor AWD", 2023, 200.0},
-        {66, "Toyota", "Tacoma TRD Pro", 2018, 80.0},
-        {67, "Nissan", "Titan Platinum Reserve", 2021, 100.0},
-        {68, "Chevrolet", "Colorado ZR2", 2019, 85.0},
-        {69, "Hyundai", "Santa Fe Limited", 2022, 90.0},
-        {70, "Jeep", "Renegade Limited", 2017, 60.0},
-        {71, "Subaru", "Ascent Touring", 2020, 85.0},
-        {72, "Honda", "Odyssey Elite", 2019, 95.0},
-        {73, "Ford", "Transit-350 XLT", 2021, 110.0},
-        {74, "GMC", "Savana 2500 LT", 2018, 100.0},
-        {75, "Kia", "Carnival SX", 2022, 120.0},
-        {76, "Dodge", "Grand Caravan SXT", 2019, 80.0},
-        {77, "Lexus", "GX 460 Luxury", 2017, 120.0},
-        {78, "Mazda", "CX-9 Signature", 2020, 85.0},
-        {79, "Volkswagen", "ID.4 1st Edition", 2021, 90.0},
-        {80, "BMW", "X3 M40i", 2019, 80.0},
-        {81, "Mercedes-Benz", "GLA 250 4MATIC", 2022, 70.0},
-        {82, "Audi", "Q3 Premium", 2018, 75.0},
-        {83, "Tesla", "Roadster Base", 2023, 250.0},
-        {84, "Toyota", "Sienna XLE", 2017, 100.0},
-        {85, "Nissan", "NV Passenger SL", 2020, 110.0},
-        {86, "Chevrolet", "Express 3500 LT", 2019, 120.0},
-        {87, "Hyundai", "Palisade Limited", 2022, 130.0},
-        {88, "Jeep", "Compass Limited", 2018, 80.0},
-        {89, "Subaru", "Impreza Sport", 2021, 60.0},
-        {90, "Honda", "Fit EX", 2017, 45.0},
-        {91, "Ford", "Fiesta ST", 2020, 50.0},
-        {92, "GMC", "Terrain Denali", 2019, 70.0},
-        {93, "Kia", "Soul GT-Line Turbo", 2022, 60.0},
-        {94, "Dodge", "Journey Crossroad", 2018, 80.0},
-        {95, "Lexus", "UX 250h F Sport", 2021, 70.0},
-        {96, "Mazda", "CX-30 Premium Plus", 2019, 55.0},
-        {97, "Volkswagen", "Arteon SEL R-Line", 2022, 90.0},
-        {98, "BMW", "i3 120 Ah", 2017, 75.0},
-        {99, "Mercedes-Benz", "EQC 400 4MATIC", 2020, 100.0},
-        {100, "Audi", "e-tron Premium Plus", 2021, 130.0},
-        {101, "Tesla", "Model X Long Range", 2023, 150.0},
-        {102, "Toyota", "4Runner Limited", 2018, 85.0},
-        {103, "Nissan", "Armada Platinum", 2021, 120.0},
-        {104, "Chevrolet", "Suburban Premier", 2020, 130.0},
-        {105, "Hyundai", "Venue SEL", 2019, 55.0},
-        {106, "Jeep", "Compass Trailhawk", 2022, 75.0},
-        {107, "Subaru", "BRZ Limited", 2018, 30.0},
-        {108, "Honda", "Insight EX", 2021, 55.0},
-        {109, "Ford", "EcoSport Titanium", 2019, 50.0},
-        {110, "GMC", "Acadia AT4", 2022, 70.0},
-        {111, "Kia", "Forte GT", 2017, 45.0},
-        {112, "Dodge", "Charger SXT", 2020, 50.0},
-        {113, "Lexus", "IS 300 F Sport", 2019, 60.0},
-        {114, "Mazda", "MX-5 Miata Club", 2022, 35.0},
-        {115, "Volkswagen", "Passat R-Line", 2018, 45.0},
-        {116, "BMW", "2 Series 230i", 2021, 45.0},
-        {117, "Mercedes-Benz", "SLC 300", 2020, 70.0},
-        {118, "Audi", "TT RS", 2017, 65.0},
-        {119, "Tesla", "Model Y Long Range", 2023, 120.0},
-        {120, "Toyota", "Tundra SR5", 2018, 60.0},
-        {121, "Nissan", "Frontier PRO-4X", 2021, 40.0},
-        {122, "Chevrolet", "Silverado 2500HD High Country", 2020, 90.0},
-        {123, "Hyundai", "Elantra SEL", 2019, 40.0},
-        {124, "Jeep", "Gladiator Rubicon", 2022, 70.0},
-        {125, "Subaru", "WRX Limited", 2018, 60.0},
-        {126, "Honda", "Clarity Plug-In Hybrid Touring", 2021, 55.0},
-        {127, "Ford", "Fusion Titanium", 2019, 45.0},
-        {128, "GMC", "Sierra 1500 Elevation", 2022, 65.0},
-        {129, "Kia", "Rio S", 2017, 35.0},
-        {130, "Dodge", "Challenger R/T", 2020, 70.0},
-        {131, "Lexus", "RC 350 F Sport", 2019, 75.0},
-        {132, "Mazda", "CX-3 Touring", 2022, 50.0},
-        {133, "Volkswagen", "Golf GTI SE", 2018, 40.0},
-        {134, "BMW", "4 Series 430i", 2021, 55.0},
-        {135, "Mercedes-Benz", "CLA 250", 2020, 50.0},
-        {136, "Audi", "A3 Premium", 2017, 40.0},
-        {137, "Tesla", "Model S Long Range", 2023, 130.0},
-        {138, "Toyota", "Camry SE", 2018, 45.0},
-        {139, "Nissan", "Altima S", 2021, 40.0},
-        {140, "Chevrolet", "Malibu LT", 2020, 50.0},
-        {141, "Hyundai", "Sonata SE", 2019, 45.0},
-        {142, "Jeep", "Wrangler Sport", 2022, 50.0},
-        {143, "Subaru", "Outback Premium", 2018, 55.0},
-        {144, "Honda", "Accord LX", 2021, 45.0},
-        {145, "Ford", "F-150 XL", 2019, 55.0},
-        {146, "GMC", "Sierra 2500HD SLT", 2022, 95.0},
-        {147, "Kia", "Telluride EX", 2019, 70.0},
-        {148, "Dodge", "Charger GT", 2022, 80.0},
-        {149, "Lexus", "RX 350", 2019, 85.0},
-        {150, "Mazda", "CX-5 Touring", 2022, 55.0},
-        {151, "Volkswagen", "Jetta S", 2018, 35.0},
-        {152, "BMW", "3 Series 330e", 2021, 65.0},
-        {153, "Mercedes-Benz", "E-Class E450", 2020, 80.0},
-        {154, "Audi", "A4 Premium Plus", 2017, 60.0},
-        {155, "Tesla", "Model 3 Performance", 2023, 100.0},
-        {156, "Toyota", "Highlander LE", 2018, 65.0},
-        {157, "Nissan", "Rogue SV", 2021, 50.0},
-        {158, "Chevrolet", "Equinox LS", 2020, 45.0},
-        {159, "Hyundai", "Tucson SE", 2019, 40.0},
-        {160, "Jeep", "Grand Cherokee Laredo", 2022, 60.0},
-        {161, "Subaru", "Forester Premium", 2018, 50.0},
-        {162, "Honda", "CR-V LX", 2021, 50.0},
-        {163, "Ford", "Escape SE", 2019, 55.0},
-        {164, "GMC", "Yukon SLT", 2022, 110.0},
-        {165, "Kia", "Seltos S", 2019, 45.0},
-        {166, "Dodge", "Challenger GT", 2018, 75.0},
-        {167, "Lexus", "NX 300", 2021, 65.0},
-        {168, "Mazda", "Mazda3 Select", 2022, 45.0},
-        {169, "Volkswagen", "Tiguan S", 2018, 40.0},
-        {170, "BMW", "X5 M50i", 2021, 95.0},
-        {171, "Mercedes-Benz", "GLC 300", 2020, 65.0},
-        {172, "Audi", "Q5 Premium Plus", 2017, 55.0},
-        {173, "Tesla", "Model X Plaid", 2023, 180.0},
-        {174, "Toyota", "RAV4 LE", 2018, 50.0},
-        {175, "Nissan", "Kicks S", 2021, 40.0},
-        {176, "Chevrolet", "Trailblazer LS", 2020, 35.0},
-        {177, "Hyundai", "Santa Fe SE", 2019, 55.0},
-        {178, "Jeep", "Renegade Sport", 2022, 40.0},
-        {179, "Subaru", "Crosstrek Premium", 2018, 50.0},
-        {180, "Honda", "HR-V LX", 2021, 45.0},
-        {181, "Ford", "Bronco Sport Base", 2019, 50.0},
-        {182, "GMC", "Terrain SLE", 2022, 50.0},
-        {183, "Kia", "Sportage LX", 2019, 45.0},
-        {184, "Dodge", "Durango SXT", 2018, 60.0},
-        {185, "Lexus", "GX 460 Premium", 2021, 100.0},
-        {186, "Mazda", "CX-9 Grand Touring", 2022, 70.0},
-        {187, "Volkswagen", "Atlas Cross Sport SE", 2018, 45.0},
-        {188, "BMW", "X3 xDrive30i", 2021, 60.0},
-        {189, "Mercedes-Benz", "GLE 350 4MATIC", 2020, 70.0},
-        {190, "Audi", "Q7 Premium Plus", 2017, 70.0},
-        {191, "Tesla", "Cybertruck Tri Motor AWD", 2023, 300.0},
-        {192, "Toyota", "Sienna Limited", 2018, 95.0},
-        {193, "Nissan", "NV200 S", 2021, 45.0},
-        {194, "Chevrolet", "Express 2500 LS", 2020, 70.0},
-        {195, "Hyundai", "Palisade SE", 2019, 50.0},
-        {196, "Jeep", "Cherokee Latitude Plus", 2022, 55.0},
-        {197, "Subaru", "Legacy Sport", 2018, 45.0},
-        {198, "Honda", "Fit LX", 2021, 40.0},
-        {199, "Ford", "Fiesta SE", 2019, 35.0},
-        {200, "GMC", "Terrain SLT", 2022, 55.0}
+                {2, "Ford", "Mustang GT", 2019, 60.0},
+                {3, "Honda", "Civic LX", 2021, 45.0},
+                {4, "Chevrolet", "Silverado 1500 LT", 2018, 55.0},
+                {5, "BMW", "3 Series 330i", 2022, 70.0},
+                {6, "Mercedes-Benz", "E-Class E350", 2017, 65.0},
+                {7, "Audi", "A4 Premium", 2020, 60.0},
+                {8, "Tesla"," Model S Performance", 2023, 150.0},
+                {9, "Subaru", "Outback Limited", 2019, 55.0},
+                {10, "Nissan", "Altima SV", 2021, 50.0},
+                {11, "Ford", "F-150 XLT", 2018, 65.0},
+                {12, "Toyota"," Corolla SE", 2020, 40.0},
+                {13, "Volkswagen", "Jetta GLI", 2022, 45.0},
+                {14, "Hyundai"," Sonata SEL", 2019, 50.0},
+                {15, "Jeep", "Wrangler Rubicon", 2021, 80.0},
+                {16, "Chevrolet"," Tahoe Premier", 2017, 100.0},
+                {17, "Lexus", "RX 350 F Sport", 2020, 90.0},
+                {18, "Mazda"," CX-5 Grand Touring", 2019, 55.0},
+                {19, "Kia"," Telluride SX", 2022, 80.0},
+                {20, "Dodge"," Charger R/T", 2018, 70.0},
+                {21, "Subaru"," Forester Touring", 2021, 60.0},
+                {22, "Honda"," Accord Sport", 2020, 50.0},
+                {23, "Ford"," Explorer Limited", 2019, 70.0},
+                {24, "GMC","Sierra 2500HD Denali", 2022, 120.0},
+                {25, "BMW", "X5 xDrive40i", 2018, 100.0},
+                {26, "Mercedes-Benz"," C-Class C300", 2021, 65.0},
+                {27, "Audi"," Q5 Premium Plus", 2019, 75.0},
+                {28, "Tesla", "Model 3 Long Range", 2023, 120.0},
+                {29, "Toyota"," Highlander XLE", 2020, 80.0},
+                {30, "Nissan"," Rogue SL", 2018, 55.0},
+                {31, "Ford", "Escape Titanium", 2022, 60.0},
+                {32, "Volkswagen"," Atlas Cross Sport SE", 2019, 70.0},
+                {33, "Hyundai", "Tucson Ultimate", 2021, 65.0},
+                {34, "Jeep"," Grand Cherokee Limited", 2018, 75.0},
+                {35, "Chevrolet", "Equinox LT", 2020, 55.0},
+                {36," Lexus"," NX 300h Luxury", 2019, 70.0},
+                {37, "Mazda", "Mazda3 Premium", 2022, 50.0},
+                {38, "Kia", "Sportage SX Turbo", 2017, 60.0},
+                {39, "Dodge", "Challenger SRT Hellcat", 2020, 110.0},
+                {40, "Subaru", "Crosstrek Limited", 2018, 55.0},
+                {41, "Honda", "CR-V EX-L", 2021, 65.0},
+                {42, "Ford", "Edge SEL", 2019, 60.0},
+                {43, "GMC", "Yukon XL SLT", 2022, 130.0},
+                {44, "BMW", "5 Series 540i", 2017, 95.0},
+                {45, "Mercedes-Benz", "GLC 300 4MATIC", 2020, 70.0},
+                {46, "Audi", "A6 Prestige", 2019, 80.0},
+                {47, "Tesla", "Model Y Performance", 2023, 140.0},
+                {48, "Toyota", "RAV4 XLE", 2018, 55.0},
+                {49, "Nissan", "Sentra SR", 2021, 45.0},
+                {50, "Chevrolet", "Traverse High Country", 2020, 90.0},
+                {51, "Hyundai", "Kona Ultimate", 2019, 50.0},
+                {52, "Jeep", "Cherokee Trailhawk", 2022, 75.0},
+                {53, "Subaru", "Legacy Limited", 2018, 60.0},
+                {54, "Honda", "Pilot Touring", 2021, 80.0},
+                {55, "Ford", "Ranger Lariat", 2019, 65.0},
+                {56, "GMC", "Canyon Denali", 2020, 70.0},
+                {57, "Kia", "Sorento SX", 2017, 75.0},
+                {58, "Dodge", "Durango GT", 2022, 90.0},
+                {59, "Lexus", "ES 350 Ultra Luxury", 2019, 80.0},
+                {60, "Mazda", "Mazda6 Signature", 2018, 60.0},
+                {61, "Volkswagen", "Tiguan SEL Premium R-Line", 2021, 70.0},
+                {62, "BMW", "7 Series 750i", 2020, 150.0},
+                {63, "Mercedes-Benz", "GLE 450 4MATIC", 2019, 100.0},
+                {64, "Audi", "Q7 Prestige", 2017, 110.0},
+                {65, "Tesla", "Cybertruck Tri Motor AWD", 2023, 200.0},
+                {66, "Toyota", "Tacoma TRD Pro", 2018, 80.0},
+                {67, "Nissan", "Titan Platinum Reserve", 2021, 100.0},
+                {68, "Chevrolet", "Colorado ZR2", 2019, 85.0},
+                {69, "Hyundai", "Santa Fe Limited", 2022, 90.0},
+                {70, "Jeep", "Renegade Limited", 2017, 60.0},
+                {71, "Subaru", "Ascent Touring", 2020, 85.0},
+                {72, "Honda", "Odyssey Elite", 2019, 95.0},
+                {73, "Ford", "Transit-350 XLT", 2021, 110.0},
+                {74, "GMC", "Savana 2500 LT", 2018, 100.0},
+                {75, "Kia", "Carnival SX", 2022, 120.0},
+                {76, "Dodge", "Grand Caravan SXT", 2019, 80.0},
+                {77, "Lexus", "GX 460 Luxury", 2017, 120.0},
+                {78, "Mazda", "CX-9 Signature", 2020, 85.0},
+                {79, "Volkswagen", "ID.4 1st Edition", 2021, 90.0},
+                {80, "BMW", "X3 M40i", 2019, 80.0},
+                {81, "Mercedes-Benz", "GLA 250 4MATIC", 2022, 70.0},
+                {82, "Audi", "Q3 Premium", 2018, 75.0},
+                {83, "Tesla", "Roadster Base", 2023, 250.0},
+                {84, "Toyota", "Sienna XLE", 2017, 100.0},
+                {85, "Nissan", "NV Passenger SL", 2020, 110.0},
+                {86, "Chevrolet", "Express 3500 LT", 2019, 120.0},
+                {87, "Hyundai", "Palisade Limited", 2022, 130.0},
+                {88, "Jeep", "Compass Limited", 2018, 80.0},
+                {89, "Subaru", "Impreza Sport", 2021, 60.0},
+                {90, "Honda", "Fit EX", 2017, 45.0},
+                {91, "Ford", "Fiesta ST", 2020, 50.0},
+                {92, "GMC", "Terrain Denali", 2019, 70.0},
+                {93, "Kia", "Soul GT-Line Turbo", 2022, 60.0},
+                {94, "Dodge", "Journey Crossroad", 2018, 80.0},
+                {95, "Lexus", "UX 250h F Sport", 2021, 70.0},
+                {96, "Mazda", "CX-30 Premium Plus", 2019, 55.0},
+                {97, "Volkswagen", "Arteon SEL R-Line", 2022, 90.0},
+                {98, "BMW", "i3 120 Ah", 2017, 75.0},
+                {99, "Mercedes-Benz", "EQC 400 4MATIC", 2020, 100.0},
+                {100, "Audi", "e-tron Premium Plus", 2021, 130.0},
+                {101, "Tesla", "Model X Long Range", 2023, 150.0},
+                {102, "Toyota", "4Runner Limited", 2018, 85.0},
+                {103, "Nissan", "Armada Platinum", 2021, 120.0},
+                {104, "Chevrolet", "Suburban Premier", 2020, 130.0},
+                {105, "Hyundai", "Venue SEL", 2019, 55.0},
+                {106, "Jeep", "Compass Trailhawk", 2022, 75.0},
+                {107, "Subaru", "BRZ Limited", 2018, 30.0},
+                {108, "Honda", "Insight EX", 2021, 55.0},
+                {109, "Ford", "EcoSport Titanium", 2019, 50.0},
+                {110, "GMC", "Acadia AT4", 2022, 70.0},
+                {111, "Kia", "Forte GT", 2017, 45.0},
+                {112, "Dodge", "Charger SXT", 2020, 50.0},
+                {113, "Lexus", "IS 300 F Sport", 2019, 60.0},
+                {114, "Mazda", "MX-5 Miata Club", 2022, 35.0},
+                {115, "Volkswagen", "Passat R-Line", 2018, 45.0},
+                {116, "BMW", "2 Series 230i", 2021, 45.0},
+                {117, "Mercedes-Benz", "SLC 300", 2020, 70.0},
+                {118, "Audi", "TT RS", 2017, 65.0},
+                {119, "Tesla", "Model Y Long Range", 2023, 120.0},
+                {120, "Toyota", "Tundra SR5", 2018, 60.0},
+                {121, "Nissan", "Frontier PRO-4X", 2021, 40.0},
+                {122, "Chevrolet", "Silverado 2500HD High Country", 2020, 90.0},
+                {123, "Hyundai", "Elantra SEL", 2019, 40.0},
+                {124, "Jeep", "Gladiator Rubicon", 2022, 70.0},
+                {125, "Subaru", "WRX Limited", 2018, 60.0},
+                {126, "Honda", "Clarity Plug-In Hybrid Touring", 2021, 55.0},
+                {127, "Ford", "Fusion Titanium", 2019, 45.0},
+                {128, "GMC", "Sierra 1500 Elevation", 2022, 65.0},
+                {129, "Kia", "Rio S", 2017, 35.0},
+                {130, "Dodge", "Challenger R/T", 2020, 70.0},
+                {131, "Lexus", "RC 350 F Sport", 2019, 75.0},
+                {132, "Mazda", "CX-3 Touring", 2022, 50.0},
+                {133, "Volkswagen", "Golf GTI SE", 2018, 40.0},
+                {134, "BMW", "4 Series 430i", 2021, 55.0},
+                {135, "Mercedes-Benz", "CLA 250", 2020, 50.0},
+                {136, "Audi", "A3 Premium", 2017, 40.0},
+                {137, "Tesla", "Model S Long Range", 2023, 130.0},
+                {138, "Toyota", "Camry SE", 2018, 45.0},
+                {139, "Nissan", "Altima S", 2021, 40.0},
+                {140, "Chevrolet", "Malibu LT", 2020, 50.0},
+                {141, "Hyundai", "Sonata SE", 2019, 45.0},
+                {142, "Jeep", "Wrangler Sport", 2022, 50.0},
+                {143, "Subaru", "Outback Premium", 2018, 55.0},
+                {144, "Honda", "Accord LX", 2021, 45.0},
+                {145, "Ford", "F-150 XL", 2019, 55.0},
+                {146, "GMC", "Sierra 2500HD SLT", 2022, 95.0},
+                {147, "Kia", "Telluride EX", 2019, 70.0},
+                {148, "Dodge", "Charger GT", 2022, 80.0},
+                {149, "Lexus", "RX 350", 2019, 85.0},
+                {150, "Mazda", "CX-5 Touring", 2022, 55.0},
+                {151, "Volkswagen", "Jetta S", 2018, 35.0},
+                {152, "BMW", "3 Series 330e", 2021, 65.0},
+                {153, "Mercedes-Benz", "E-Class E450", 2020, 80.0},
+                {154, "Audi", "A4 Premium Plus", 2017, 60.0},
+                {155, "Tesla", "Model 3 Performance", 2023, 100.0},
+                {156, "Toyota", "Highlander LE", 2018, 65.0},
+                {157, "Nissan", "Rogue SV", 2021, 50.0},
+                {158, "Chevrolet", "Equinox LS", 2020, 45.0},
+                {159, "Hyundai", "Tucson SE", 2019, 40.0},
+                {160, "Jeep", "Grand Cherokee Laredo", 2022, 60.0},
+                {161, "Subaru", "Forester Premium", 2018, 50.0},
+                {162, "Honda", "CR-V LX", 2021, 50.0},
+                {163, "Ford", "Escape SE", 2019, 55.0},
+                {164, "GMC", "Yukon SLT", 2022, 110.0},
+                {165, "Kia", "Seltos S", 2019, 45.0},
+                {166, "Dodge", "Challenger GT", 2018, 75.0},
+                {167, "Lexus", "NX 300", 2021, 65.0},
+                {168, "Mazda", "Mazda3 Select", 2022, 45.0},
+                {169, "Volkswagen", "Tiguan S", 2018, 40.0},
+                {170, "BMW", "X5 M50i", 2021, 95.0},
+                {171, "Mercedes-Benz", "GLC 300", 2020, 65.0},
+                {172, "Audi", "Q5 Premium Plus", 2017, 55.0},
+                {173, "Tesla", "Model X Plaid", 2023, 180.0},
+                {174, "Toyota", "RAV4 LE", 2018, 50.0},
+                {175, "Nissan", "Kicks S", 2021, 40.0},
+                {176, "Chevrolet", "Trailblazer LS", 2020, 35.0},
+                {177, "Hyundai", "Santa Fe SE", 2019, 55.0},
+                {178, "Jeep", "Renegade Sport", 2022, 40.0},
+                {179, "Subaru", "Crosstrek Premium", 2018, 50.0},
+                {180, "Honda", "HR-V LX", 2021, 45.0},
+                {181, "Ford", "Bronco Sport Base", 2019, 50.0},
+                {182, "GMC", "Terrain SLE", 2022, 50.0},
+                {183, "Kia", "Sportage LX", 2019, 45.0},
+                {184, "Dodge", "Durango SXT", 2018, 60.0},
+                {185, "Lexus", "GX 460 Premium", 2021, 100.0},
+                {186, "Mazda", "CX-9 Grand Touring", 2022, 70.0},
+                {187, "Volkswagen", "Atlas Cross Sport SE", 2018, 45.0},
+                {188, "BMW", "X3 xDrive30i", 2021, 60.0},
+                {189, "Mercedes-Benz", "GLE 350 4MATIC", 2020, 70.0},
+                {190, "Audi", "Q7 Premium Plus", 2017, 70.0},
+                {191, "Tesla", "Cybertruck Tri Motor AWD", 2023, 300.0},
+                {192, "Toyota", "Sienna Limited", 2018, 95.0},
+                {193, "Nissan", "NV200 S", 2021, 45.0},
+                {194, "Chevrolet", "Express 2500 LS", 2020, 70.0},
+                {195, "Hyundai", "Palisade SE", 2019, 50.0},
+                {196, "Jeep", "Cherokee Latitude Plus", 2022, 55.0},
+                {197, "Subaru", "Legacy Sport", 2018, 45.0},
+                {198, "Honda", "Fit LX", 2021, 40.0},
+                {199, "Ford", "Fiesta SE", 2019, 35.0},
+                {200, "GMC", "Terrain SLT", 2022, 55.0}
+    };
 
-};
-   cout<<"************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************"<<endl; 
+    // Welcome message
+    cout<<"************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************"<<endl;
     
+    // Code execution starts here
 }
+
+
 
 
