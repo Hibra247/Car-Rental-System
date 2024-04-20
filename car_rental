@@ -70,7 +70,7 @@ class User{
             outFile.close();
             cout << "User information stored in customer_info.txt" << endl;
         } else {
-            cerr << "Unable to open file!" << endl;
+            cout << "Unable to open file!" << endl;
         }
 	}
 	
