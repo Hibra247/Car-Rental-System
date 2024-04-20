@@ -1,7 +1,6 @@
 #include<iostream>
 #include <fstream>
 #include <cstidlib>
-#include <unistd.h>
 #include <iomanip>
 using namespace std;
 
@@ -89,25 +88,8 @@ public:
         : User(username, password), carnumber(cnumber), days(days), rentalfee(fee) {}
 
     void selectCar() {
-        private:
-    string customername;
-    int carnumber;
-    int days;
-    double rentalfee;
-
-public:
-    BookingManager(string username, string password, string cname, int cnumber, int days, double fee)
-        : User(username, password), carnumber(cnumber), days(days), rentalfee(fee) {}
-
-    void selectCar() {
         // Display menu of cars and prompt user to enter car number
         // Set carnumber data member based on user's selection
-    }
-
-    void setDays() {
-        // Prompt user to enter number of days to rent car
-        // Set days data member based on user's input
-    }
     }
 
     void setDays() {
@@ -130,22 +112,7 @@ public:
     cout <<"\n";
     cout << "	| Total Rental Amount is :"<<"-------|"<<setw(10)<<rentalfee<<" |"<<endl;
     cout << "	 ________________________________________________________"<<endl;
-    int f;
-    system("PAUSE");
-
-    system ("CLS");
-
-     ifstream inf("thanks.txt");
-
-
-  char str[300];
-
-  while(inf) {
-    inf.getline(str, 300);
-    if(inf) cout << str << endl;
-  }
-  inf.close();
-	}	
+    int f;	
 };
 
 int main(){
@@ -354,7 +321,7 @@ int main(){
         {200, "GMC", "Terrain SLT", 2022, 55.0}
 
 };
-    
+   cout<<"************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************"<<endl; 
     
 }
 
