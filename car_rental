@@ -1,3 +1,19 @@
+------------------------------------------
+To Do:
+//include namespace
+car:
+static variable car count:no of car that currently booked
+int main:
+ask user to enter name and password
+display car
+select the car by index number
+how many day car 
+credit card detail
+pick up time
+customer:
+store card detail
+car rental history
+------------------------------------------
 #include<iostream>
 #include <fstream>
 #include <cstdlib>
