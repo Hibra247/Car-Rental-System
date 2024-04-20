@@ -36,7 +36,13 @@ int getYear(){return year;};
 double getRentalPrice(){return rental_price;};
 
 void display(){
-   //rewrite the display that using forloop display eac array element
+   cout << "Car ID: " << carID << endl;
+    cout << "Brand: " << brand << endl;
+    cout << "Model: " << model << endl;
+    cout << "Year: " << year << endl;
+    cout << "Rental Price: $" << rental_price << endl;
+    cout << "Availability: " << (availability ? "Available" : "Unavailable") << endl;
+    cout << endl;
 }
 double calcPrice(int day){
     double price=rental_price * day;
