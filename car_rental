@@ -1,19 +1,17 @@
-------------------------------------------
-To Do:
+//------------------------------------------
+//To Do:
 //include namespace
-car:
-static variable car count:no of car that currently booked
-int main:
-ask user to enter name and password
-display car
-select the car by index number
-how many day car 
-credit card detail
-pick up time
-customer:
-store card detail
-car rental history
-------------------------------------------
+//int main:
+//ask user to enter name and password
+//display car
+//select the car by index number
+//how many day car 
+//credit card detail
+//pick up time
+//customer:
+//store card detail
+//car rental history
+//------------------------------------------
 #include<iostream>
 #include <fstream>
 #include <cstdlib>
@@ -30,10 +28,11 @@ private:
     int year;
     bool availability;
     double rental_price;
+    static int Car_count;
 
 public:
     Car(){} // Default constructor needed for array declaration
-    Car(int _carID, string _brand, string _model, int _year, double _rental_price): carID(_carID),brand(_brand),model(_model),year(_year),rental_price(_rental_price){};
+    Car(int _carID, string _brand, string _model, int _year, double _rental_price): carID(_carID),brand(_brand),model(_model),year(_year),rental_price(_rental_price){Car_count++;};
 
     // Method to set details of a car
     void setDetail(int _carID, string _brand, string _model, int _year, double _rental_price){
@@ -70,7 +69,7 @@ public:
     }
 };
 
-const int num_cars = 200;
+int Car::Car_count=0;
 
 // Class representing a User
 class User{
