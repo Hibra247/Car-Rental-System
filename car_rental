@@ -149,7 +149,7 @@ public:
             int f;
     }
 };
-
+int num_cars=200;
 int main(){
     
     // Array of Car objects initialized with car details
