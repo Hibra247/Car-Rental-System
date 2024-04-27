@@ -62,11 +62,7 @@ public:
         cout << endl;
     }
 
-    // Method to calculate rental price based on number of days
-    double calcPrice(int day){
-        double price = rental_price * day;
-        return price;
-    }
+    
 };
 
 int Car::Car_count=0;
@@ -115,19 +111,13 @@ class BookingManager: protected User, public Car{
 public:
     BookingManager(string name, string password, string cname, int cnumber, int days, double fee)
         : User(name, password), carnumber(cnumber), days(days), rentalfee(fee) {}
-
-    // Method to select a car
-    void selectCar() {
-        // Display menu of cars and prompt user to enter car number
-        // Set carnumber data member based on user's selection
-    }
-
     // Method to set number of days for rental
-    void setDays() {
-        // Prompt user to enter number of days to rent car
-        // Set days data member based on user's input
+   
+    // Method to calculate rental price based on number of days
+    double calcPrice(int day){
+        double price = rental_price * day;
+        return price;
     }
-
     // Method to display rental invoice
     void showrent()
     {
