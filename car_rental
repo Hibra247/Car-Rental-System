@@ -183,9 +183,40 @@ int main(){
               
              };
 
+ User u1("hareem","1234");// customer
+Car c1;
+int choice; 
+double price;
+int day;
+
     // Welcome message
     cout<<"************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************"<<endl;
-    
+    c1.display();
+
+  cout << "Available Cars:" << endl;
+    for (int i = 0; i < num_cars; i++) {
+        cout << "Car " << cars[i].getId() << ": " << cars[i].getBrand() << " " << cars[i].getModel() << endl;
+    }
+
+    // Prompt user to select a car
+    cout << "Enter the car ID you want to rent: ";
+    cin >> choice;
+cout<<"enter the number of days for rent: "<<endl; // correct line 
+cin>>day;
+    // Find the selected car and get its rental price
+    for (int i = 0; i < num_cars; i++) {
+        if (cars[i].getId() == choice) {
+            price = cars[i].getRentalPrice();
+            break;
+        }
+    }
+    price=price*day;
+
+    // Now 'price' contains the rental price of the selected car
+    cout << "Rental Price of selected car: $" << price << endl;
+ BookingManager m1("username", "password", "customername", choice, day, price);
+ m1.showrent();
+
     // Code execution starts here
 }
 
