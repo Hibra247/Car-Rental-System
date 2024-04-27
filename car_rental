@@ -109,8 +109,8 @@ class BookingManager: protected User, public Car{
     double rentalfee;
 
 public:
-    BookingManager(string name, string password, string cname, int cnumber, int days, double fee)
-        : User(name, password), carnumber(cnumber), days(days), rentalfee(fee) {}
+    BookingManager(string name, string password, string cname, int cnumber, int _days, double fee)
+        : User(name, password), carnumber(cnumber), days(_days), rentalfee(fee) {}
     // Method to set number of days for rental
    
     // Method to calculate rental price based on number of days
@@ -126,10 +126,10 @@ public:
             cout << "    ///////////////////////////////////////////////////////////"<<endl;
             cout << "    | Invoice No. :"<<"------------------|"<<setw(10)<<"#BnC92243"<<" |"<<endl;
             cout << "    | Customer Name:"<<"-----------------|"<<setw(10)<<customername<<" |"<<endl;
-        cout << "    | Car Model :"<<"--------------------|"<<setw(10)<<getModel()<<" |"<<endl;
+            cout << "    | Car Model :"<<"--------------------|"<<setw(10)<<getModel()<<" |"<<endl;
             cout << "    | Car No. :"<<"----------------------|"<<setw(10)<<carnumber<<" |"<<endl;
             cout << "    | Number of days :"<<"---------------|"<<setw(10)<<days<<" |"<<endl;
-            cout << "    | Your Rental Amount is :"<<"--------|"<<setw(10)<<rentalfee<<" |"<<endl;
+            cout << "    | Car Rental Price is :"<<"--------|"<<setw(10)<<rentalfee<<" |"<<endl;
             cout << "    | Caution Money :"<<"----------------|"<<setw(10)<<"0"<<" |"<<endl;
             cout << "    | Advanced :"<<"---------------------|"<<setw(10)<<"0"<<" |"<<endl;
             cout << "     ________________________________________________________"<<endl;
