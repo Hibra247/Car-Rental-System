@@ -101,39 +101,42 @@ class Customer : protected User{
 };
 
 // Class representing a Booking Manager, inheriting from User and Car
-class BookingManager: protected User, public Car{
- private:
+class BookingManager : protected User, public Car {
+private:
     string customername;
     Car customer_car;
-    int days;
+    int day;
     double rentalfee;
 
 public:
-    BookingManager(string name, string password, string cname,Car c1, int _days, double fee)
-        : User(name, password), customer_car(c1), days(_days), rentalfee(fee) {}
-  
+    BookingManager(string name, string password, string cname, Car c1, int _days, double fee)
+        : User(name, password), customer_car(c1), day(_days), rentalfee(fee) {}
+
     // Method to calculate rental price based on number of days
-    double calcPrice(int day){
-        double price = rental_price * day;
-        return price;
+    double calcPrice() {
+        rentalfee = customer_car.getRentalPrice() * day;
+        return rentalfee;
     }
+
     // Method to display rental invoice
-    void showrent()
-    {
+    void showrent() {
+        // Calculate rental fee if it hasn't been calculated yet
+        if (rentalfee == 0.0) {
+            rentalfee = calcPrice();
+        }
+
         // Display rental invoice details
-        cout << "\n                       Car Rental - Customer Invoice                  "<<endl;
-            cout << "    ///////////////////////////////////////////////////////////"<<endl;
-            cout << "    | Invoice No. :"<<"------------------|"<<setw(10)<<"#BnC92243"<<" |"<<endl;
-            cout << "    | Customer Name:"<<"-----------------|"<<setw(10)<<customername<<" |"<<endl;
-            cout << "    | Car Model :"<<"--------------------|"<<setw(10)<<getModel()<<" |"<<endl;
-            cout << "    | Car No. :"<<"----------------------|"<<setw(10)<<carnumber<<" |"<<endl;
-            cout << "    | Number of days :"<<"---------------|"<<setw(10)<<days<<" |"<<endl;
-            cout << "    | Car Rental Price is :"<<"--------|"<<setw(10)<<rentalfee<<" |"<<endl;
-            cout << "     ________________________________________________________"<<endl;
-            cout <<"\n";
-            cout << "    | Total Rental Amount is :"<<"-------|"<<setw(10)<<rentalfee<<" |"<<endl;
-            cout << "     ________________________________________________________"<<endl;
-            int f;
+        cout << "\n                       Car Rental - Customer Invoice                  " << endl;
+        cout << "    ///////////////////////////////////////////////////////////" << endl;
+        cout << "    | Customer Name:" << "-----------------|" << setw(10) << customername << " |" << endl;
+        cout << "    | Car Model :" << "--------------------|" << setw(10) << customer_car.getModel() << " |" << endl;
+        cout << "    | Car No. :" << "----------------------|" << setw(10) << customer_car.getId() << " |" << endl;
+        cout << "    | Car Rental Price is :" << "--------|" << setw(10) << customer_car.getRentalPrice() << " |" << endl;
+        cout << "    | Number of days :" << "---------------|" << setw(10) << day << " |" << endl;
+        cout << "     ________________________________________________________" << endl;
+        cout << "\n";
+        cout << "    | Total Rental Amount is :" << "-------|" << setw(10) << rentalfee << " |" << endl;
+        cout << "     ________________________________________________________" << endl;
     }
 };
 int num_cars=25;
@@ -169,47 +172,66 @@ int main(){
                 {25, "BMW", "X5 xDrive40i", 2018, 100.0},
               
              };
-User u1("hareem", "1234"); // customer
-    Car c1;
-    int choice;
-    double price;
-    int day;
-
-    // Welcome message
+// Array of Car objects initialized with car details
+    Car cars[num_cars]={
+        // Car details initialization
+        {1, "Toyota", "Camry LE", 2020, 40.0},
+                {2, "Ford", "Mustang GT", 2019, 60.0},
+                {3, "Honda", "Civic LX", 2021, 45.0},
+                {4, "Chevrolet", "Silverado 1500 LT", 2018, 55.0},
+                {5, "BMW", "3 Series 330i", 2022, 70.0},
+                {6, "Mercedes-Benz", "E-Class E350", 2017, 65.0},
+                {7, "Audi", "A4 Premium", 2020, 60.0},
+                {8, "Tesla"," Model S Performance", 2023, 150.0},
+                {9, "Subaru", "Outback Limited", 2019, 55.0},
+                {10, "Nissan", "Altima SV", 2021, 50.0},
+                {11, "Ford", "F-150 XLT", 2018, 65.0},
+                {12, "Toyota"," Corolla SE", 2020, 40.0},
+                {13, "Volkswagen", "Jetta GLI", 2022, 45.0},
+                {14, "Hyundai"," Sonata SEL", 2019, 50.0},
+                {15, "Jeep", "Wrangler Rubicon", 2021, 80.0},
+                {16, "Chevrolet"," Tahoe Premier", 2017, 100.0},
+                {17, "Lexus", "RX 350 F Sport", 2020, 90.0},
+                {18, "Mazda"," CX-5 Grand Touring", 2019, 55.0},
+                {19, "Kia"," Telluride SX", 2022, 80.0},
+                {20, "Dodge"," Charger R/T", 2018, 70.0},
+                {21, "Subaru"," Forester Touring", 2021, 60.0},
+                {22, "Honda"," Accord Sport", 2020, 50.0},
+                {23, "Ford"," Explorer Limited", 2019, 70.0},
+                {24, "GMC","Sierra 2500HD Denali", 2022, 120.0},
+                {25, "BMW", "X5 xDrive40i", 2018, 100.0},
+              
+             };
+// Welcome message
     cout << "************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************" << endl;
-    c1.display();
 
     cout << "Available Cars:" << endl;
     for (int i = 0; i < num_cars; i++) {
-        cout << "Car " << cars[i].getId() << ": " << cars[i].getBrand() << " " << cars[i].getModel() << endl;
+        cars[i].display();
     }
 
     // Prompt user to select a car
     cout << "Enter the car ID you want to rent: ";
+    int choice;
     cin >> choice;
 
-    // Find the selected car and get its rental price
+    // Find the selected car and get its details
+    Car selectedCar;
     for (int i = 0; i < num_cars; i++) {
         if (cars[i].getId() == choice) {
-            price = cars[i].getRentalPrice();
+            selectedCar = cars[i];
             break;
         }
     }
 
+    // Prompt user for number of days for rent
     cout << "Enter the number of days for rent: ";
+    int day;
     cin >> day;
 
-    // Now 'price' contains the rental price of the selected car
-    price = price * day;
-    cout << "Rental Price of selected car: $" << price << endl;
-
-    // Create BookingManager object with user input and calculate rental price
-    BookingManager m1("username", "password", "customername", c1, day, price);
-
-    // Call calcPrice method from BookingManager
-    double totalRentalPrice = m1.calcPrice(day);
-
-    // Display rental invoice
+    // Calculate rental fee and display rental invoice
+    BookingManager m1("username", "password", "customername", selectedCar, day, 0.0);
+    double totalRentalPrice = m1.calcPrice();
     m1.showrent();
 
     return 0;
