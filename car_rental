@@ -201,8 +201,7 @@ int day;
     // Prompt user to select a car
     cout << "Enter the car ID you want to rent: ";
     cin >> choice;
-cout<<"enter the number of days for rent: "<<endl; // correct line 
-cin>>day;
+
     // Find the selected car and get its rental price
     for (int i = 0; i < num_cars; i++) {
         if (cars[i].getId() == choice) {
@@ -210,6 +209,8 @@ cin>>day;
             break;
         }
     }
+cout<<"enter the number of days for rent: "<<endl; // correct line 
+cin>>day;
     price=price*day;
 
     // Now 'price' contains the rental price of the selected car
