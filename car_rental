@@ -104,15 +104,14 @@ class Customer : protected User{
 class BookingManager: protected User, public Car{
  private:
     string customername;
-    int carnumber;
+    Car customer_car;
     int days;
     double rentalfee;
 
 public:
-    BookingManager(string name, string password, string cname, int cnumber, int _days, double fee)
-        : User(name, password), carnumber(cnumber), days(_days), rentalfee(fee) {}
-    // Method to set number of days for rental
-   
+    BookingManager(string name, string password, string cname,Car c1, int _days, double fee)
+        : User(name, password), customer_car(c1), days(_days), rentalfee(fee) {}
+  
     // Method to calculate rental price based on number of days
     double calcPrice(int day){
         double price = rental_price * day;
@@ -130,8 +129,6 @@ public:
             cout << "    | Car No. :"<<"----------------------|"<<setw(10)<<carnumber<<" |"<<endl;
             cout << "    | Number of days :"<<"---------------|"<<setw(10)<<days<<" |"<<endl;
             cout << "    | Car Rental Price is :"<<"--------|"<<setw(10)<<rentalfee<<" |"<<endl;
-            cout << "    | Caution Money :"<<"----------------|"<<setw(10)<<"0"<<" |"<<endl;
-            cout << "    | Advanced :"<<"---------------------|"<<setw(10)<<"0"<<" |"<<endl;
             cout << "     ________________________________________________________"<<endl;
             cout <<"\n";
             cout << "    | Total Rental Amount is :"<<"-------|"<<setw(10)<<rentalfee<<" |"<<endl;
@@ -172,18 +169,17 @@ int main(){
                 {25, "BMW", "X5 xDrive40i", 2018, 100.0},
               
              };
-
- User u1("hareem","1234");// customer
-Car c1;
-int choice; 
-double price;
-int day;
+User u1("hareem", "1234"); // customer
+    Car c1;
+    int choice;
+    double price;
+    int day;
 
     // Welcome message
-    cout<<"************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************"<<endl;
+    cout << "************************** WELCOME TO ONLINE CAR RENTAL SYSTEM***************************" << endl;
     c1.display();
 
-  cout << "Available Cars:" << endl;
+    cout << "Available Cars:" << endl;
     for (int i = 0; i < num_cars; i++) {
         cout << "Car " << cars[i].getId() << ": " << cars[i].getBrand() << " " << cars[i].getModel() << endl;
     }
@@ -199,16 +195,24 @@ int day;
             break;
         }
     }
-cout<<"enter the number of days for rent: "<<endl; // correct line 
-cin>>day;
-    price=price*day;
+
+    cout << "Enter the number of days for rent: ";
+    cin >> day;
 
     // Now 'price' contains the rental price of the selected car
+    price = price * day;
     cout << "Rental Price of selected car: $" << price << endl;
- BookingManager m1("username", "password", "customername", choice, day, price);
- m1.showrent();
 
-    // Code execution starts here
+    // Create BookingManager object with user input and calculate rental price
+    BookingManager m1("username", "password", "customername", c1, day, price);
+
+    // Call calcPrice method from BookingManager
+    double totalRentalPrice = m1.calcPrice(day);
+
+    // Display rental invoice
+    m1.showrent();
+
+    return 0;
 }
 
 
