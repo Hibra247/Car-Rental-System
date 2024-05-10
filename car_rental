@@ -87,34 +87,45 @@ public:
 
 class Customer : protected User{
 public:
-     // Constructor
+    // Constructor
     Customer(string n, string p) : User(n, p) {}
-     void storeinfo(){
+    void storeinfo(){
         //perform filehandling which write username aand password to "customer.txt"
-     }
+    }
     void payment() {
-           try {
-               int cardnumber, cvc;
-               string expirydate, name;
-               cout << "Credit Card                                               VISA" << endl;
-               cout << "Card number :";
-               cin >> cardnumber;
-               cout << "Expiry Date: ";
-               cin >> expirydate;
-               cout << "CVC:";
-               cin >> cvc;
-               if (cin.fail()) {
-                   throw runtime_error("Invalid input! Please enter valid card information."); // Throw an exception for invalid input
-               }
-               cout << "Payment successful" << endl;
-           }
-           catch (const exception& e) {
-               cerr << "Exception occurred: " << e.what() << endl;
-               cin.clear(); // Clear error flags
-               
-           }
-       }
-   };
+        try {
+            int cardnumber, cvc;
+            string expirydate, name;
+            cout << "Credit Card                                               VISA" << endl;
+            cout << "Card number :";
+            cin >> cardnumber;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input! Please enter a valid card number.");
+            }
+            cout << "Expiry Date: ";
+            cin >> expirydate;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input! Please enter a valid expiry date.");
+            }
+            cout << "CVC:";
+            cin >> cvc;
+            if (cin.fail()) {
+                throw runtime_error("Invalid input! Please enter a valid CVC.");
+            }
+            cout << "Payment successful" << endl;
+        }
+        catch (const std::exception& e) {
+            cerr << "Exception occurred: " << e.what() << endl;
+            cin.clear(); // Clear error flags
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+        }
+        catch (...) {
+            cerr << "Unknown exception occurred." << endl;
+            cin.clear(); // Clear error flags
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+        }
+    }
+    };
 
 // Class representing a Booking Manager, inheriting from User and Car
 class BookingManager : protected User, public Car {
