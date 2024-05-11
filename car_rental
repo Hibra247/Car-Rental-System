@@ -117,12 +117,12 @@ public:
         catch (const std::exception& e) {
             cerr << "Exception occurred: " << e.what() << endl;
             cin.clear(); // Clear error flags
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+           
         }
         catch (...) {
             cerr << "Unknown exception occurred." << endl;
             cin.clear(); // Clear error flags
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
+           
         }
     }
     };
